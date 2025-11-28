@@ -1,0 +1,171 @@
+:root {
+  /* Colors */
+  --primary-color: #0a0f0d;
+  --panel-color: #111414;
+  --font-color: #00ff88;
+  --secondary-color: #4affa8;
+  --buttons: #00e5ff;
+  --weak: #ff0033;
+  --medium: #ffb300;
+  --strong: #00ff88;
+  --epic: #00e5ff;
+
+  /* Fonts */
+
+  --font-headings: "Montserrat", sans-serif;
+  --font-body: "Fira Code", monospace;
+}
+
+
+
+body {
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.wrapper {
+    width: 90%;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+main a {
+    text-decoration: none;
+    
+}
+
+
+header h1 {
+  color: var(--buttons);
+  font-family: var(--font-body);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header img {
+    height: 25vh;
+    max-width: 160px;
+    width: auto;
+    margin: 0 auto 1rem auto;
+}
+
+main {
+  width: 90%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.checker,
+.generate {
+  padding: 30px;
+  border-radius: 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 2s ease, box-shadow 2s ease;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.checker:hover,
+.generate:hover {
+  box-shadow: 0 0 15px var(--secondary-color);
+  border-color: var(--font-color);
+  
+}
+
+
+
+
+
+
+
+h2 {
+  color: var(--font-color);
+  font-family: var(--font-headings);
+}
+
+.checkButton,
+.generateButton {
+  color: var(--buttons);
+  padding: 10px 24px;
+  border: 2px solid var(--buttons);
+  background: transparent;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 1s ease;
+}
+
+.checkButton:hover,
+.generateButton:hover {
+  background: rgba(0, 234, 255, 0.1);
+  box-shadow: 0 0 8px var(--buttons);
+}
+
+footer {
+    color: #00e5ff;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    white-space: nowrap;
+    margin-top: 100px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Checker styles */
+
+.styled-input {
+    width: 300px;
+    padding: 15px;
+    color: var(--font-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--buttons);
+    border-radius: 8px;
+    outline: none;
+}
+
+.styled-input::placeholder {
+    color: var(--buttons);
+    opacity: 0.7;
+}
+
+.styled-input:focus {
+    border-color: var(--secondary-color);
+}
+
+@media (max-width: 480px) {
+    header img {
+        height: 18vh;
+        max-height: 120px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .checker, .generate {
+        box-shadow: 0 0 8px var(--font-color);
+    }
+
+    footer{
+        font-size: small;
+        flex-direction: column;
+    }
+}
