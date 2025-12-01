@@ -1,5 +1,5 @@
 import { calculateStrength } from "./PasswordChecker.mjs";
-import { checkBreaches } from "./API.mjs";
+import { checkBreaches } from "./ApiModule.mjs";
 
 //Elements
 const meterBar = document.querySelector(".meter-bar");
