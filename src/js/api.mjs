@@ -2,11 +2,11 @@ import { CONFIG } from "./config";
 
 const apiKey = import.meta.env.API_KEY;
 
-export async function getRemotePassword(len = 14) {
-  const res = await fetch(CONFIG.API_NINJA_URL + len, {
-    headers: { "X-Api-Key": apiKey },
-  });
-}
+// export async function getRemotePassword(len = 14) {
+//   const res = await fetch(CONFIG.API_NINJA_URL + len, {
+//     headers: { "X-Api-Key": apiKey },
+//   });
+// }
 
 async function sha1(password) {
   const encoder = new TextEncoder();

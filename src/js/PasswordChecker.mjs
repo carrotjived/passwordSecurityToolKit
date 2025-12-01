@@ -1,4 +1,3 @@
-import { checkBreaches } from "./API.mjs";
 const strongPattern =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]|:;"'<>,.?/~`]).{8,}$/;
 
