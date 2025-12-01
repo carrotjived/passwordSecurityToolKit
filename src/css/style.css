@@ -16,6 +16,19 @@
   --font-body: "Fira Code", monospace;
 }
 
+/* Animations */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   background-color: var(--primary-color);
   display: flex;
@@ -92,7 +105,9 @@ h2 {
 }
 
 .checkButton,
-.generateButton {
+.generateButton,
+.clearInput,
+.return-button {
   color: var(--buttons);
   padding: 10px 24px;
   border: 2px solid var(--buttons);
@@ -104,7 +119,9 @@ h2 {
 }
 
 .checkButton:hover,
-.generateButton:hover {
+.generateButton:hover,
+.clearInput:hover,
+.return-button:hover {
   background: rgba(0, 234, 255, 0.1);
   box-shadow: 0 0 8px var(--buttons);
 }
@@ -139,6 +156,34 @@ footer {
 
 .styled-input:focus {
   border-color: var(--secondary-color);
+}
+
+/* Password Checker */
+.meter {
+  width: 100%;
+  max-width: 300px;
+  height: 20px;
+  background-color: var(--panel-color);
+  border: 2px solid var(--buttons);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.meter-bar {
+  height: 100%;
+  width: 0;
+  background-color: var(--weak);
+  transition:
+    width 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.meter-text {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  color: var(--font-color);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 480px) {

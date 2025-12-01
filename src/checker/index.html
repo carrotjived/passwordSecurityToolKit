@@ -13,6 +13,8 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
+    <script type="module" src="../js/passwordChecker.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -34,7 +36,16 @@
             placeholder="Enter your password:"
             class="styled-input"
           />
+          <button type="button" class="clearInput">Clear</button>
         </div>
+        <div class="meter">
+          <div class="meter-bar"></div>
+        </div>
+        <p class="meter-text"></p>
+        <p class="breached-text"></p>
+        <a href="../index.html"
+          ><button type="button" class="return-button">Return</button></a
+        >
       </main>
       <footer>
         <p>© 2025 Password Security Toolkit</p>
