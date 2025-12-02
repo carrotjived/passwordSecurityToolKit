@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         checker: resolve(__dirname, "src/checker/index.html"),
+        generate: resolve(__dirname, "src/generate/index.html"),
       },
     },
   },
