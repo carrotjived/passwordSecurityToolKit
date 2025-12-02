@@ -1,4 +1,4 @@
-import { calculateStrength } from "./PasswordChecker.mjs";
+import { updateStrengthMeter } from "./PasswordChecker.mjs";
 import { callHaveIBeenPwned } from "./ApiModule.mjs";
 
 //Elements
@@ -6,30 +6,6 @@ const meterBar = document.querySelector(".meter-bar");
 const meterText = document.querySelector(".meter-text");
 const inputBox = document.querySelector(".styled-input");
 const breachedText = document.querySelector(".breached-text");
-
-function updateStrengthMeter(password) {
-  const { score, strength, color } = calculateStrength(password);
-
-  //Update width base on score
-  meterBar.style.width = score + "%";
-
-  //Update color based on strength
-  if (strength == "Weak") {
-    meterBar.style.backgroundColor = color;
-  } else if (strength == "Medium") {
-    meterBar.style.backgroundColor = color;
-  } else if (strength == "Strong") {
-    meterBar.style.backgroundColor = color;
-  } else {
-    meterBar.style.backgroundColor = color;
-  }
-
-  //Update input border color for effects
-  inputBox.style.border = `2px solid ${color}`;
-
-  //Update text label
-  meterText.textContent = `Strength: ${strength} (${score}/100)`;
-}
 
 //Check if the password is in the database of breached passwords
 async function breachedPassword(password) {
@@ -56,7 +32,7 @@ async function breachedPassword(password) {
 
 function clearButton(input) {
   input.value = "";
-  updateStrengthMeter("");
+  updateStrengthMeter("", meterBar, inputBox, meterText);
 
   //Hide texts
   meterText.textContent = "";
@@ -71,7 +47,7 @@ function clearButton(input) {
 //Strength Meter and API comparison
 document.querySelector(".styled-input").addEventListener("input", async (e) => {
   const password = e.target.value;
-  updateStrengthMeter(password);
+  updateStrengthMeter(password, meterBar, inputBox, meterText);
   breachedPassword(password);
 });
 

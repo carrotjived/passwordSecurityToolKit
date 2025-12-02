@@ -119,7 +119,8 @@ h2 {
 .generateButton,
 .clearInput,
 .return-button,
-.generate-button {
+.generate-button,
+.copy-button {
   color: var(--buttons);
   padding: 10px 24px;
   border: 2px solid var(--buttons);
@@ -134,7 +135,8 @@ h2 {
 .generateButton:hover,
 .clearInput:hover,
 .return-button:hover,
-.generate-button:hover {
+.generate-button:hover,
+.copy-button:hover {
   background: rgba(0, 234, 255, 0.1);
   box-shadow: 0 0 8px var(--buttons);
 }
@@ -197,6 +199,8 @@ footer {
   font-family: var(--font-body);
   color: var(--font-color);
   font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
 }
 
 /* Password Generator Text */
@@ -227,6 +231,11 @@ footer {
 .generate-text:hover {
   transform: scale(1.02);
   box-shadow: 0 0 18px var(--strong);
+}
+
+.password-output {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 480px) {

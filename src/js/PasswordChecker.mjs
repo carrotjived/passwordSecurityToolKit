@@ -42,4 +42,26 @@ export function calculateStrength(password) {
   return { score, strength, color };
 }
 
+export function updateStrengthMeter(password, meterBar, inputBox, meterText) {
+  const { score, strength, color } = calculateStrength(password);
 
+  //Update width base on score
+  meterBar.style.width = score + "%";
+
+  //Update color based on strength
+  if (strength == "Weak") {
+    meterBar.style.backgroundColor = color;
+  } else if (strength == "Medium") {
+    meterBar.style.backgroundColor = color;
+  } else if (strength == "Strong") {
+    meterBar.style.backgroundColor = color;
+  } else {
+    meterBar.style.backgroundColor = color;
+  }
+
+  //Update input border color for effects
+  inputBox.style.border = `2px solid ${color}`;
+
+  //Update text label
+  meterText.textContent = `Strength: ${strength} (${score}/100)`;
+}
