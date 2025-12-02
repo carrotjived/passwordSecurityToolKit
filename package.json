@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/carrotjived/passwordSecurityToolKit/issues"
   },
-  "homepage": "https://github.com/carrotjived/passwordSecurityToolKit#readme"
+  "homepage": "https://github.com/carrotjived/passwordSecurityToolKit#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
 }

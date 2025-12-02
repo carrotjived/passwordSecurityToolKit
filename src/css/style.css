@@ -29,6 +29,17 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   background-color: var(--primary-color);
   display: flex;
@@ -107,7 +118,8 @@ h2 {
 .checkButton,
 .generateButton,
 .clearInput,
-.return-button {
+.return-button,
+.generate-button {
   color: var(--buttons);
   padding: 10px 24px;
   border: 2px solid var(--buttons);
@@ -121,7 +133,8 @@ h2 {
 .checkButton:hover,
 .generateButton:hover,
 .clearInput:hover,
-.return-button:hover {
+.return-button:hover,
+.generate-button:hover {
   background: rgba(0, 234, 255, 0.1);
   box-shadow: 0 0 8px var(--buttons);
 }
@@ -184,6 +197,36 @@ footer {
   font-family: var(--font-body);
   color: var(--font-color);
   font-size: 0.9rem;
+}
+
+/* Password Generator Text */
+
+.generate-text {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  border: 2px solid var(--buttons);
+  border-radius: 10px;
+  background-color: var(--panel-color);
+  color: var(--font-color);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  box-shadow: 0 0 12px var(--epic);
+  text-align: center;
+  min-width: 280px;
+  max-width: 90%;
+  word-break: break-word;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: fadeIn 4s ease-out;
+}
+
+.generate-text:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 18px var(--strong);
 }
 
 @media (max-width: 480px) {

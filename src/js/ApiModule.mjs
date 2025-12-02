@@ -1,12 +1,6 @@
 import { CONFIG } from "./config";
 
-const apiKey = import.meta.env.API_KEY;
 
-// export async function getRemotePassword(len = 14) {
-//   const res = await fetch(CONFIG.API_NINJA_URL + len, {
-//     headers: { "X-Api-Key": apiKey },
-//   });
-// }
 
 async function sha1(password) {
   const encoder = new TextEncoder();
@@ -19,7 +13,7 @@ async function sha1(password) {
   return hashHex.toUpperCase();
 }
 
-export async function checkBreaches(password) {
+export async function callHaveIBeenPwned(password) {
   const hash = await sha1(password);
   const prefix = hash.slice(0, 5);
   const suffix = hash.slice(5);
@@ -38,4 +32,28 @@ export async function checkBreaches(password) {
   }
 
   return { breached: false, count: 0 };
+}
+
+export async function callPasswordGeneratorAPI(options) {
+  const { length, apiKey } = options;
+  const url = `${CONFIG.API_NINJA_URL}${length}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": apiKey,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.random_password;
+  } catch (error) {
+    console.error("Failed to fetch password: ", error);
+    throw error;
+  }
 }

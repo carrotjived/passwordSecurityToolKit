@@ -13,36 +13,28 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
+    <script type="module" src="../js/passwordGenerator.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <header>
         <a href="/index.html"
           ><img
-            src="./images/PasswordToolKitIcon.png"
+            src="../images/PasswordToolKitIcon.png"
             alt="App Icon"
             class="app-icon"
           />
         </a>
-
         <h1>Password Security Toolkit</h1>
       </header>
       <main>
-        <a href="./checker/index.html"
-          ><div class="checker">
-            <h2>Password Strength Checker</h2>
-            <button type="button" class="checkButton">Open Checker</button>
-          </div>
-        </a>
-
-        <div class="generate">
-          <h2>Password Generator</h2>
-          <a href="./generate/index.html"
-            ><button type="button" class="generateButton">
-              Generate Password
-            </button></a
-          >
-        </div>
+        <h2>Password Generator</h2>
+        <button type="button" class="generate-button">Generate Password</button>
+        <p class="generate-text"></p>
+        <a href="../index.html"
+          ><button type="button" class="return-button">Return</button></a
+        >
       </main>
       <footer>
         <p>© 2025 Password Security Toolkit</p>

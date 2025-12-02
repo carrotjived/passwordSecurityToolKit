@@ -1,5 +1,5 @@
 import { calculateStrength } from "./PasswordChecker.mjs";
-import { checkBreaches } from "./ApiModule.mjs";
+import { callHaveIBeenPwned } from "./ApiModule.mjs";
 
 //Elements
 const meterBar = document.querySelector(".meter-bar");
@@ -35,7 +35,7 @@ function updateStrengthMeter(password) {
 async function breachedPassword(password) {
   const breached = document.querySelector(".breached-text");
 
-  const result = await checkBreaches(password);
+  const result = await callHaveIBeenPwned(password);
 
   if (result.breached) {
     breached.textContent = `⚠️ This password is not good! Not good! Breached for ${result.count} times!`;
