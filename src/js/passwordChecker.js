@@ -1,11 +1,15 @@
 import { updateStrengthMeter } from "./PasswordChecker.mjs";
 import { callHaveIBeenPwned } from "./ApiModule.mjs";
+import { loadFooter } from "./util.mjs";
 
 //Elements
 const meterBar = document.querySelector(".meter-bar");
 const meterText = document.querySelector(".meter-text");
 const inputBox = document.querySelector(".styled-input");
 const breachedText = document.querySelector(".breached-text");
+
+//Load Footer
+loadFooter();
 
 //Check if the password is in the database of breached passwords
 async function breachedPassword(password) {

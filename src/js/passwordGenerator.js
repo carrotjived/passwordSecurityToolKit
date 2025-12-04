@@ -1,5 +1,9 @@
 import { generatePasswordFromAPI, copyPassword } from "./PasswordGenerator.mjs";
 import { updateStrengthMeter } from "./PasswordChecker.mjs";
+import { loadFooter } from "./util.mjs";
+
+//Load Footer
+loadFooter();
 
 //Elements
 const button = document.querySelector(".generate-button");
