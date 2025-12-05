@@ -1,4 +1,5 @@
 import { callPasswordGeneratorAPI } from "./ApiModule.mjs";
+import { getToLocal } from "./util.mjs";
 
 //Generate Password from api
 export async function generatePasswordFromAPI(length, apiKey) {
@@ -11,22 +12,11 @@ export async function generatePasswordFromAPI(length, apiKey) {
   }
 }
 
-//Copy to clipboard
-export function copyPassword(outputElement, buttonElement) {
-  const password = outputElement.textContent;
+export function showHistory(historyBoxElement) {
+  const history = getToLocal();
+  console.log(history);
 
-  if (!password) return;
-
-  navigator.clipboard
-    .writeText(password)
-    .then(() => {
-      buttonElement.textContent = "Copied!";
-      setTimeout(() => {
-        buttonElement.textContent = "Copy to Clipboard";
-      }, 1500);
-    })
-    .catch((err) => {
-      console.error("Clipboard copy failed: ", err);
-      buttonElement.textContent = "Failed";
-    });
+  historyBoxElement.innerHTML = history
+    .map((item) => `<li style = "color: ${item.color}">${item.password}</li>`)
+    .join("");
 }

@@ -59,6 +59,7 @@ export function updateStrengthMeter(password, meterBar, inputBox, meterText) {
     meterBar.style.backgroundColor = color;
   }
 
+
   //Update input border color for effects
   inputBox.style.border = `2px solid ${color}`;
 
