@@ -1,12 +1,20 @@
-import { updateStrengthMeter } from "./PasswordChecker.mjs";
+import {
+  updateStrengthMeter,
+  showCheckedHistory,
+  calculateStrength,
+} from "./PasswordChecker.mjs";
 import { callHaveIBeenPwned } from "./ApiModule.mjs";
-import { loadFooter } from "./util.mjs";
+import { loadFooter, savedCheckerHistory, clearOnUnload } from "./util.mjs";
 
 //Elements
 const meterBar = document.querySelector(".meter-bar");
 const meterText = document.querySelector(".meter-text");
 const inputBox = document.querySelector(".styled-input");
 const breachedText = document.querySelector(".breached-text");
+const historyDiv = document.querySelector(".check-history");
+const historyBoxElement = document.querySelector(".check-history-list");
+const historyButton = document.querySelector(".show-history-button");
+let saveTimer;
 
 //Load Footer
 loadFooter();
@@ -51,8 +59,22 @@ function clearButton(input) {
 //Strength Meter and API comparison
 document.querySelector(".styled-input").addEventListener("input", async (e) => {
   const password = e.target.value;
+  const { score, strength, color } = calculateStrength(password);
+
   updateStrengthMeter(password, meterBar, inputBox, meterText);
   breachedPassword(password);
+
+  const result = await callHaveIBeenPwned(password);
+  const breached = result.breached;
+
+  clearTimeout(saveTimer);
+
+  saveTimer = setTimeout(() => {
+    savedCheckerHistory(password, score, strength, color, breached);
+    if (historyDiv.style.display == "block") {
+      showCheckedHistory(historyBoxElement);
+    }
+  }, 10000);
 });
 
 //Clear Button
@@ -60,3 +82,17 @@ document.querySelector(".styled-input").addEventListener("input", async (e) => {
 document.querySelector(".clearInput").addEventListener("click", () => {
   clearButton(inputBox);
 });
+
+//Show history Button
+document.querySelector(".show-history-button").addEventListener("click", () => {
+  if (historyDiv.style.display == "none" || historyDiv.style.display == "") {
+    historyButton.textContent = "Hide History";
+    historyDiv.style.display = "block";
+    showCheckedHistory(historyBoxElement);
+  } else {
+    historyDiv.style.display = "none";
+    historyButton.textContent = "Show History";
+  }
+});
+
+clearOnUnload();

@@ -59,3 +59,32 @@ export function saveToLocal(password, strengthColor) {
 export function getToLocal() {
   return JSON.parse(localStorage.getItem("saved-password")) || [];
 }
+
+export function savedCheckerHistory(
+  password,
+  score,
+  strength,
+  color,
+  breached
+) {
+  let history = JSON.parse(localStorage.getItem("checker-history")) || [];
+
+  history.push({ password, score, strength, color, breached });
+
+  if (history.length > 15) {
+    history = history.slice(-15);
+  }
+
+  localStorage.setItem("checker-history", JSON.stringify(history));
+}
+
+export function getCheckedhistory() {
+  return JSON.parse(localStorage.getItem("checker-history")) || [];
+}
+
+export function clearOnUnload() {
+  windows.addEventListener("beforeunload", () => {
+    localStorage.removeItem("saved-password");
+    localStorage.removeItem("checker-history");
+  });
+}

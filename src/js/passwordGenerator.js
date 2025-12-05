@@ -1,6 +1,11 @@
 import { generatePasswordFromAPI, showHistory } from "./PasswordGenerator.mjs";
 import { updateStrengthMeter } from "./PasswordChecker.mjs";
-import { loadFooter, copyPassword, saveToLocal } from "./util.mjs";
+import {
+  loadFooter,
+  copyPassword,
+  saveToLocal,
+  clearOnUnload,
+} from "./util.mjs";
 
 //Load Footer
 loadFooter();
@@ -62,3 +67,5 @@ historyButton.addEventListener("click", () => {
     historyButton.textContent = "Show History";
   }
 });
+
+clearOnUnload();

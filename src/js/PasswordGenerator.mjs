@@ -14,9 +14,9 @@ export async function generatePasswordFromAPI(length, apiKey) {
 
 export function showHistory(historyBoxElement) {
   const history = getToLocal();
-  console.log(history);
 
   historyBoxElement.innerHTML = history
     .map((item) => `<li style = "color: ${item.color}">${item.password}</li>`)
     .join("");
 }
+

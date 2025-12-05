@@ -1,5 +1,9 @@
+import { getCheckedhistory, savedCheckerHistory } from "./util.mjs";
+
 const strongPattern =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]|:;"'<>,.?/~`]).{8,}$/;
+
+const historyBoxElement = document.querySelector(".check-history-list");
 
 export function calculateStrength(password) {
   let score = 0;
@@ -59,10 +63,21 @@ export function updateStrengthMeter(password, meterBar, inputBox, meterText) {
     meterBar.style.backgroundColor = color;
   }
 
-
   //Update input border color for effects
   inputBox.style.border = `2px solid ${color}`;
 
   //Update text label
   meterText.textContent = `Strength: ${strength} (${score}/100)`;
+}
+
+//To show the history of the checked password
+export function showCheckedHistory(historyBoxElement) {
+  const history = getCheckedhistory();
+
+  historyBoxElement.innerHTML = history
+    .map(
+      (item) =>
+        `<li style = "color: ${item.color}">${item.password} - ${item.strength} (${item.score}/100) ${item.breached ? "⚠️ Breached" : "✅ Safe"}</li>`
+    )
+    .join("");
 }
