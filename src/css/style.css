@@ -244,7 +244,8 @@ footer {
 }
 
 /* Password History List */
-.password-history, .check-history {
+.password-history,
+.check-history {
   margin-top: 2rem;
   padding: 1rem;
   border: 2px solid var(--buttons);
@@ -254,21 +255,24 @@ footer {
   display: none;
 }
 
-.password-history h3, .check-history h3 {
+.password-history h3,
+.check-history h3 {
   text-align: center;
   font-family: var(--font-headings);
   color: var(--secondary-color);
   margin-bottom: 1rem;
 }
 
-.history-list, .check-history-list {
+.history-list,
+.check-history-list {
   list-style: none;
   padding: 0;
   margin: 0;
   font-family: var(--font-body);
 }
 
-.history-list li, .check-history-list li {
+.history-list li,
+.check-history-list li {
   padding: 0.5rem;
   border-bottom: 1px solid var(--buttons);
   text-align: center;
