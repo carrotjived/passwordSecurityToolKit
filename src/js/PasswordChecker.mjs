@@ -1,4 +1,4 @@
-import { getCheckedhistory, savedCheckerHistory } from "./util.mjs";
+import { getCheckedhistory } from "./util.mjs";
 
 const strongPattern =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]|:;"'<>,.?/~`]).{8,}$/;

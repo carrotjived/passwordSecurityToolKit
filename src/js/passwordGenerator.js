@@ -4,7 +4,7 @@ import {
   loadFooter,
   copyPassword,
   saveToLocal,
-  clearOnUnload,
+  clearSavedPasswords,
 } from "./util.mjs";
 
 //Load Footer
@@ -21,6 +21,7 @@ const saveButton = document.querySelector(".save-button");
 const historyButton = document.querySelector(".show-history-button");
 const historyBoxElement = document.querySelector(".history-list");
 const historyDiv = document.querySelector(".password-history");
+const clearSavedButton = document.querySelector(".clear-saved-password");
 let strengthColor;
 
 async function generatePassword() {
@@ -59,13 +60,22 @@ saveButton.addEventListener("click", () => {
 
 historyButton.addEventListener("click", () => {
   if (historyDiv.style.display == "none" || historyDiv.style.display == "") {
-    historyButton.textContent = "Hide History";
+    historyButton.textContent = "Hide Saved Password(s)";
     historyDiv.style.display = "block";
     showHistory(historyBoxElement);
   } else {
     historyDiv.style.display = "none";
-    historyButton.textContent = "Show History";
+    historyButton.textContent = "Show Saved Password(s)";
   }
 });
 
-clearOnUnload();
+//clear saved passwords in local storage
+clearSavedButton.addEventListener("click", () => {
+  const confirmClear = confirm(
+    "Are you sure you want to clear all saved password(s)?"
+  );
+  if (confirmClear) {
+    clearSavedPasswords();
+    showHistory(historyBoxElement);
+  }
+});

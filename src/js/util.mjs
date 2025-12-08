@@ -67,7 +67,7 @@ export function savedCheckerHistory(
   color,
   breached
 ) {
-  let history = JSON.parse(localStorage.getItem("checker-history")) || [];
+  let history = JSON.parse(sessionStorage.getItem("checker-history")) || [];
 
   history.push({ password, score, strength, color, breached });
 
@@ -75,16 +75,17 @@ export function savedCheckerHistory(
     history = history.slice(-15);
   }
 
-  localStorage.setItem("checker-history", JSON.stringify(history));
+  sessionStorage.setItem("checker-history", JSON.stringify(history));
 }
 
 export function getCheckedhistory() {
-  return JSON.parse(localStorage.getItem("checker-history")) || [];
+  return JSON.parse(sessionStorage.getItem("checker-history")) || [];
+}
+
+export function clearSavedPasswords() {
+  localStorage.removeItem("saved-password");
 }
 
 export function clearOnUnload() {
-  windows.addEventListener("beforeunload", () => {
-    localStorage.removeItem("saved-password");
-    localStorage.removeItem("checker-history");
-  });
+  sessionStorage.removeItem("checker-history");
 }

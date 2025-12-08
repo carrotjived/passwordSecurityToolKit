@@ -123,7 +123,7 @@ h2 {
 .generate-button,
 .copy-button,
 .save-button,
-.show-history-button {
+.show-history-button, .clear-saved-password {
   color: var(--buttons);
   padding: 10px 24px;
   border: 2px solid var(--buttons);
@@ -141,7 +141,7 @@ h2 {
 .generate-button:hover,
 .copy-button:hover,
 .save-button:hover,
-.show-history-button:hover {
+.show-history-button:hover, .clear-saved-password:hover {
   background: rgba(0, 234, 255, 0.1);
   box-shadow: 0 0 8px var(--buttons);
 }
@@ -276,6 +276,7 @@ footer {
   padding: 0.5rem;
   border-bottom: 1px solid var(--buttons);
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 480px) {
