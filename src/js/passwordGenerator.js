@@ -72,7 +72,7 @@ historyButton.addEventListener("click", () => {
 //clear saved passwords in local storage
 clearSavedButton.addEventListener("click", () => {
   const confirmClear = confirm(
-    "Are you sure you want to clear all saved password(s)?"
+    "Are you sure you want to clear all saved password(s)?",
   );
   if (confirmClear) {
     clearSavedPasswords();
